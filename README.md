@@ -2,6 +2,12 @@
 
 # Store app
 
+<div align="start">
+
+### Небольшой интернет магазин, реализованный с помощью Redux-Toolkit
+
+</div>
+
 [![Header](https://github.com/solovpro/store-app/raw/master/src/assets/img/app-page-order.png)](https://solovpro.github.io/store-app/)
 [![Header](https://github.com/solovpro/store-app/raw/master/src/assets/img/app-page-cart.png)](https://solovpro.github.io/store-app/)
 
