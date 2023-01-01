@@ -35,10 +35,8 @@ const Order: React.FC<OrderProps> = ({ hasSelectedComputed, sumComputed, data })
                         return <GoodsOrder product={product} key={product.id} />;
                      }
                   })}
-                  <div className={s.orderGoods__Result}>
-                     {/*  &#8381; - Знак Рубля ( ₽ )  */}
-                     <div className={s.cartResult}>Сумма заказа: {sumComputed} &#8381;</div>
-                  </div>
+                  {/*  &#8381; - Знак Рубля ( ₽ )  */}
+                  <div className={s.orderGoods__Result}>Сумма заказа: {sumComputed} &#8381;</div>
                </>
             ) : (
                <div className={s.orderGoods__NotSelected}>Нет выбранных товаров</div>
