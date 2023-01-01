@@ -8,7 +8,7 @@ import { Product } from '../../types/types';
 import s from './Goods.module.scss';
 
 interface ProductProps {
-   product: Product;
+   product: Product; // Элемент из массива data
 }
 
 // Товар
@@ -22,10 +22,10 @@ const GoodsPanel: React.FC<ProductProps> = ({ product }) => {
             <div>{product.price} Р</div>
          </div>
          <button
+            onClick={() => dispatch(selectProduct(product))}
             disabled={product.selected}
             className={s.productButton}
             type='button'
-            onClick={() => dispatch(selectProduct(product))}
          >
             +
          </button>

@@ -10,7 +10,7 @@ import deleteImg from '../../assets/img/delete.png';
 import s from './Goods.module.scss';
 
 interface ProductProps {
-   product: Product;
+   product: Product; // Элемент из массива data
 }
 
 // Товар
@@ -32,18 +32,18 @@ const GoodsOrder: React.FC<ProductProps> = ({ product }) => {
                <div className={s.productEdit__Count}>
                   <div className={s.productEdit__CountSign}>
                      <button
+                        onClick={() => dispatch(minusAmount(product))}
                         className={s.productEdit__CountSign_Minus}
                         type='button'
-                        onClick={() => dispatch(minusAmount(product))}
                      >
                         -
                      </button>
                   </div>
                   <div className={s.productEdit__CountSign}>
                      <button
+                        onClick={() => dispatch(plusAmount(product))}
                         className={s.productEdit__CountSign_Plus}
                         type='button'
-                        onClick={() => dispatch(plusAmount(product))}
                      >
                         +
                      </button>
