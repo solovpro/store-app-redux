@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 
 import { useAppDispatch } from '../../hooks/hooks';
 import { clearCart } from '../../stores/mainSlice';
+import { SetState } from '../../types/types';
 
 import s from './Received.module.scss';
 
 interface ReceivedProps {
-   setIsOrder: React.Dispatch<React.SetStateAction<boolean>>;
+   setIsOrder: SetState<boolean>;
 }
 
 // Окно об успешном заказе

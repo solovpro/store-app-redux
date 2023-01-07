@@ -4,7 +4,7 @@ import { Product, InitialState } from '../types/types';
 import { data } from '../data/data';
 import { RootState } from './index';
 
-const mainSlice: any = createSlice({
+const mainSlice = createSlice({
    name: 'toolkit',
    initialState: {
       data: data, // Данные о товарах
@@ -62,7 +62,7 @@ const mainSlice: any = createSlice({
       },
 
       // Увеличить количество товара в заказе
-      plusAmount(state: RootState, action: any) {
+      plusAmount(state: RootState, action: PayloadAction<Product>) {
          state.data.forEach((dataEl: Product): void => {
             if (dataEl.id === action.payload.id) {
                dataEl.amount += 1;

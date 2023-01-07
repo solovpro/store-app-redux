@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface Product {
    id: number;
    img: string;
@@ -7,8 +9,10 @@ export interface Product {
    amount: number;
    sum: number;
 }
-//func: (dataEl: Product) => void;
+
 export interface InitialState {
    isReceived: boolean;
    data: Product[];
 }
+
+export type SetState<T> = React.Dispatch<React.SetStateAction<T>>;

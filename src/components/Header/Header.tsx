@@ -13,7 +13,7 @@ import s from './Header.module.scss';
 // Шапка сайта
 const Header: React.FC = () => {
    // Высчитываем количество выбранных товаров
-   const countSelectedComputed = useAppSelector((state: RootState) =>
+   const countSelectedComputed: number = useAppSelector((state: RootState) =>
       state.mainReducer.mainSlice.data.reduce(
          (count: number, item: Product) => (item.selected ? (count += 1) : count),
          0

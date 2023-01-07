@@ -13,10 +13,10 @@ import s from './App.module.scss';
 
 const App: React.FC = () => {
    const [isOrder, setIsOrder] = useState<boolean>(false); // Состояние окна об успешном заказе
-   const data = useAppSelector((state: RootState) => state.mainReducer.mainSlice.data);
+   const data: Product[] = useAppSelector((state: RootState) => state.mainReducer.mainSlice.data);
 
    // Высчитываем сумму выбранных товаров
-   const sumComputed = useAppSelector((state: RootState) =>
+   const sumComputed: number = useAppSelector((state: RootState) =>
       state.mainReducer.mainSlice.data.reduce(
          (sum: number, item: Product) => (item.selected ? (sum += item.sum) : sum),
          0
@@ -24,7 +24,7 @@ const App: React.FC = () => {
    );
 
    // Проверяем, есть ли выбранные товары
-   const hasSelectedComputed = useAppSelector((state: RootState) => {
+   const hasSelectedComputed: boolean = useAppSelector((state: RootState) => {
       const countSelectedComputed = state.mainReducer.mainSlice.data.reduce(
          (count: number, item: Product) => (item.selected ? (count += 1) : count),
          0

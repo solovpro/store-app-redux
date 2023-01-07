@@ -11,7 +11,7 @@ import product8 from '../assets/img/product-8.png';
 import product9 from '../assets/img/product-9.png';
 import product10 from '../assets/img/product-10.png';
 
-export const data: Array<Product> = [
+export const data: Product[] = [
    {
       id: 1,
       img: product1,

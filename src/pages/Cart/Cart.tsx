@@ -2,15 +2,15 @@ import React, { ReactElement } from 'react';
 import cn from 'classnames';
 
 import GoodsCart from '../../components/Goods/GoodsCart';
+import { Product, SetState } from '../../types/types';
 import { clearCart } from '../../stores/mainSlice';
 import { useAppDispatch } from '../../hooks/hooks';
-import { Product } from '../../types/types';
 
 import s from './Cart.module.scss';
 
 interface CartProps {
-   setIsOrder: React.Dispatch<React.SetStateAction<boolean>>;
    hasSelectedComputed: boolean;
+   setIsOrder: SetState<boolean>;
    sumComputed: number;
    data: Product[];
 }
