@@ -19,16 +19,20 @@ interface CartProps {
 const Cart: React.FC<CartProps> = ({ hasSelectedComputed, sumComputed, setIsOrder, data }) => {
    const dispatch = useAppDispatch();
    return (
-      <div className={s.cart}>
-         <div className={s.cartHeader}>Корзина</div>
-         <>
+      <section className={s.cart}>
+         <h1 className={s.cartHeader}>Корзина</h1>
+         <ul>
             {data.map((product: Product): ReactElement | undefined => {
                if (product.selected) {
-                  return <GoodsCart product={product} key={product.id} />;
+                  return (
+                     <li>
+                        <GoodsCart product={product} key={product.id} />
+                     </li>
+                  );
                }
             })}
-            {!hasSelectedComputed && <div className={s.cartNotSelected}>Нет выбранных товаров</div>}
-         </>
+            {!hasSelectedComputed && <p className={s.cartNotSelected}>Нет выбранных товаров</p>}
+         </ul>
          {hasSelectedComputed && (
             <div className={s.cartButtons}>
                <button
@@ -39,7 +43,7 @@ const Cart: React.FC<CartProps> = ({ hasSelectedComputed, sumComputed, setIsOrde
                   Очистить корзину
                </button>
                <div className={s.cartButtons__Result}>
-                  <div className={s.cartButtons__ResultSum}>Сумма заказа: {sumComputed} ₽</div>
+                  <h2 className={s.cartButtons__ResultSum}>Сумма заказа: {sumComputed} ₽</h2>
                   <button
                      className={cn(s.cartButton, s.cartButtons__Order)}
                      onClick={() => setIsOrder(true)}
@@ -50,7 +54,7 @@ const Cart: React.FC<CartProps> = ({ hasSelectedComputed, sumComputed, setIsOrde
                </div>
             </div>
          )}
-      </div>
+      </section>
    );
 };
 

@@ -15,10 +15,10 @@ interface ReceivedProps {
 const Received: React.FC<ReceivedProps> = ({ setIsOrder }) => {
    const dispatch = useAppDispatch();
    return (
-      <div className={s.received}>
+      <article className={s.received}>
          <div className={s.container} />
          <div className={s.receivedContent}>
-            <div>Заказ принят!</div>
+            <h2>Заказ принят!</h2>
             <Link
                to='/'
                onClick={() => {
@@ -26,10 +26,10 @@ const Received: React.FC<ReceivedProps> = ({ setIsOrder }) => {
                   dispatch(clearCart());
                }}
             >
-               <div className={s.receivedContent__Button}>Ok</div>
+               <button className={s.receivedContent__Button}>Ok</button>
             </Link>
          </div>
-      </div>
+      </article>
    );
 };
 

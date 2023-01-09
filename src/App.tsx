@@ -33,11 +33,11 @@ const App: React.FC = () => {
    });
 
    return (
-      <main className={s.app}>
+      <>
          <Header />
          {isOrder && <Received setIsOrder={setIsOrder} />}
          {data ? (
-            <div className={s.appContent}>
+            <main className={s.app}>
                <Routes>
                   <Route
                      path='/'
@@ -55,11 +55,11 @@ const App: React.FC = () => {
                      }
                   />
                </Routes>
-            </div>
+            </main>
          ) : (
-            <div>Произошла ошибка при получении данных</div>
+            <h1>Произошла ошибка при получении данных</h1>
          )}
-      </main>
+      </>
    );
 };
 

@@ -15,35 +15,41 @@ interface OrderProps {
 
 // Экран Заказа
 const Order: React.FC<OrderProps> = ({ hasSelectedComputed, sumComputed, data }) => (
-   <div className={s.order}>
-      <div className={cn(s.orderProducts, s.orderBlock)}>
-         <div className={s.orderBlock__Header}>Товары</div>
-         <div className={s.orderGoods}>
+   <section className={s.order}>
+      <article className={cn(s.orderProducts, s.orderBlock)}>
+         <h1 className={s.orderBlock__Header}>Товары</h1>
+         <ul className={s.orderGoods}>
             {data.map((product: Product): ReactElement | undefined => (
-               <GoodsPanel product={product} key={product.id} />
+               <li>
+                  <GoodsPanel product={product} key={product.id} />
+               </li>
             ))}
-         </div>
-      </div>
+         </ul>
+      </article>
       <div className={s.orderSeparation} />
-      <div className={cn(s.orderSelected, s.orderBlock)}>
-         <div className={s.orderBlock__Header}>Заказ</div>
+      <aside className={cn(s.orderSelected, s.orderBlock)}>
+         <h1 className={s.orderBlock__Header}>Заказ</h1>
          <div className={s.orderGoods}>
             {hasSelectedComputed ? (
-               <>
+               <ul>
                   {data.map((product: Product): ReactElement | undefined => {
                      if (product.selected) {
-                        return <GoodsOrder product={product} key={product.id} />;
+                        return (
+                           <li>
+                              <GoodsOrder product={product} key={product.id} />
+                           </li>
+                        );
                      }
                   })}
                   {/*  &#8381; - Знак Рубля ( ₽ )  */}
-                  <div className={s.orderGoods__Result}>Сумма заказа: {sumComputed} &#8381;</div>
-               </>
+                  <h2 className={s.orderGoods__Result}>Сумма заказа: {sumComputed} &#8381;</h2>
+               </ul>
             ) : (
-               <div className={s.orderGoods__NotSelected}>Нет выбранных товаров</div>
+               <p className={s.orderGoods__NotSelected}>Нет выбранных товаров</p>
             )}
          </div>
-      </div>
-   </div>
+      </aside>
+   </section>
 );
 
 export default Order;

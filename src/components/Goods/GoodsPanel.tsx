@@ -15,11 +15,11 @@ interface ProductProps {
 const GoodsPanel: React.FC<ProductProps> = ({ product }) => {
    const dispatch = useAppDispatch();
    return (
-      <div className={cn(s.product, s.inProductsPanel)}>
-         <div className={s.productName}>{product.name}</div>
+      <article className={cn(s.product, s.inProductsPanel)}>
+         <p className={s.productName}>{product.name}</p>
          <img className={s.productImg} src={product.img} alt='' />
          <div className={s.productInfo}>
-            <div>{product.price} Р</div>
+            <p>{product.price} Р</p>
          </div>
          <button
             onClick={() => dispatch(selectProduct(product))}
@@ -29,7 +29,7 @@ const GoodsPanel: React.FC<ProductProps> = ({ product }) => {
          >
             +
          </button>
-      </div>
+      </article>
    );
 };
 
