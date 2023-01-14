@@ -1,9 +1,9 @@
 import React, { ReactElement, useState } from 'react';
 import cn from 'classnames';
 
-import { Product } from '../../types/types';
 import SelectedProducts from '../../components/SelectedProducts/SelectedProducts';
 import GoodsPanel from '../../components/Goods/GoodsPanel';
+import { Product } from '../../types/types';
 
 import s from './Order.module.scss';
 
@@ -34,7 +34,7 @@ const Order: React.FC<OrderProps> = ({ hasSelectedComputed, sumComputed, data })
             </ul>
          </article>
          <div className={s.aside}>
-            <div className={s.asideArrow} onClick={() => setIsAside(ia => !ia)}>
+            <div className={s.asideArrow} onClick={() => setIsAside(aside => !aside)}>
                <span
                   className={cn(s.asideArrow__Left, {
                      [s.asideArrow__LeftOpen]: !isAside,

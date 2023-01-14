@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react';
 
-// import { useAppDispatch } from '../../hooks/hooks';
 import GoodsOrder from '../Goods/GoodsOrder';
 import { Product } from '../../types/types';
 
@@ -14,7 +13,6 @@ interface SelectedProductsProps {
 
 // Блок выбранных товаров
 const SelectedProducts: React.FC<SelectedProductsProps> = ({ hasSelectedComputed, sumComputed, data }) => {
-   // const dispatch = useAppDispatch();
    return (
       <aside className={s.selectedProducts}>
          <h1 className={s.selectedProducts__Header}>Заказ</h1>
