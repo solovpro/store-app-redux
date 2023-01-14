@@ -19,7 +19,7 @@ const GoodsPanel: React.FC<ProductProps> = ({ product }) => {
          <p className={s.productName}>{product.name}</p>
          <img className={s.productImg} src={product.img} alt='' />
          <div className={s.productInfo}>
-            <p>{product.price} Р</p>
+            <p>{product.price} р</p>
          </div>
          <button
             onClick={() => dispatch(selectProduct(product))}
@@ -27,7 +27,7 @@ const GoodsPanel: React.FC<ProductProps> = ({ product }) => {
             className={s.productButton}
             type='button'
          >
-            +
+            {product.selected ? 'Добавлено' : 'Добавить в корзину'}
          </button>
       </article>
    );

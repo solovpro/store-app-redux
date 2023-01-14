@@ -25,8 +25,8 @@ const Cart: React.FC<CartProps> = ({ hasSelectedComputed, sumComputed, setIsOrde
             {data.map((product: Product): ReactElement | undefined => {
                if (product.selected) {
                   return (
-                     <li>
-                        <GoodsCart product={product} key={product.id} />
+                     <li key={product.id}>
+                        <GoodsCart product={product} />
                      </li>
                   );
                }
@@ -43,7 +43,7 @@ const Cart: React.FC<CartProps> = ({ hasSelectedComputed, sumComputed, setIsOrde
                   Очистить корзину
                </button>
                <div className={s.cartButtons__Result}>
-                  <h2 className={s.cartButtons__ResultSum}>Сумма заказа: {sumComputed} ₽</h2>
+                  <h2 className={s.cartButtons__ResultSum}>Сумма заказа: {sumComputed} р</h2>
                   <button
                      className={cn(s.cartButton, s.cartButtons__Order)}
                      onClick={() => setIsOrder(true)}

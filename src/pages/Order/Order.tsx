@@ -1,9 +1,9 @@
-import React, { ReactElement } from 'react';
-import { Product } from '../../types/types';
+import React, { ReactElement, useState } from 'react';
 import cn from 'classnames';
 
+import { Product } from '../../types/types';
+import SelectedProducts from '../../components/SelectedProducts/SelectedProducts';
 import GoodsPanel from '../../components/Goods/GoodsPanel';
-import GoodsOrder from '../../components/Goods/GoodsOrder';
 
 import s from './Order.module.scss';
 
@@ -14,42 +14,45 @@ interface OrderProps {
 }
 
 // Экран Заказа
-const Order: React.FC<OrderProps> = ({ hasSelectedComputed, sumComputed, data }) => (
-   <section className={s.order}>
-      <article className={cn(s.orderProducts, s.orderBlock)}>
-         <h1 className={s.orderBlock__Header}>Товары</h1>
-         <ul className={s.orderGoods}>
-            {data.map((product: Product): ReactElement | undefined => (
-               <li>
-                  <GoodsPanel product={product} key={product.id} />
-               </li>
-            ))}
-         </ul>
-      </article>
-      <div className={s.orderSeparation} />
-      <aside className={cn(s.orderSelected, s.orderBlock)}>
-         <h1 className={s.orderBlock__Header}>Заказ</h1>
-         <div className={s.orderGoods}>
-            {hasSelectedComputed ? (
-               <ul>
-                  {data.map((product: Product): ReactElement | undefined => {
-                     if (product.selected) {
-                        return (
-                           <li>
-                              <GoodsOrder product={product} key={product.id} />
-                           </li>
-                        );
-                     }
+const Order: React.FC<OrderProps> = ({ hasSelectedComputed, sumComputed, data }) => {
+   const [isAside, setIsAside] = useState<boolean>(false);
+   return (
+      <section className={s.order}>
+         <article
+            className={cn(s.orderProducts, {
+               [s.orderProducts__widthBig]: !isAside,
+               [s.orderProducts__widthSmall]: isAside,
+            })}
+         >
+            <h1 className={s.orderProducts__Header}>Товары</h1>
+            <ul className={s.orderProducts__Goods}>
+               {data.map((product: Product): ReactElement | undefined => (
+                  <li key={product.id}>
+                     <GoodsPanel product={product} />
+                  </li>
+               ))}
+            </ul>
+         </article>
+         <div className={s.aside}>
+            <div className={s.asideArrow} onClick={() => setIsAside(ia => !ia)}>
+               <span
+                  className={cn(s.asideArrow__Left, {
+                     [s.asideArrow__LeftOpen]: !isAside,
                   })}
-                  {/*  &#8381; - Знак Рубля ( ₽ )  */}
-                  <h2 className={s.orderGoods__Result}>Сумма заказа: {sumComputed} &#8381;</h2>
-               </ul>
-            ) : (
-               <p className={s.orderGoods__NotSelected}>Нет выбранных товаров</p>
-            )}
+               ></span>
+               <span
+                  className={cn(s.asideArrow__Right, {
+                     [s.asideArrow__RightOpen]: !isAside,
+                  })}
+               ></span>
+            </div>
+            <p className={s.asideText}>{isAside ? 'Закрыть' : 'Открыть'} заказ</p>
          </div>
-      </aside>
-   </section>
-);
+         {isAside && (
+            <SelectedProducts hasSelectedComputed={hasSelectedComputed} sumComputed={sumComputed} data={data} />
+         )}
+      </section>
+   );
+};
 
 export default Order;
